@@ -14,8 +14,11 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- PWA Manifest -->
-<link rel="manifest" href="/misarifi/manifest.json" />
+  <!-- PWA Manifest بمسار مطلق -->
+  <link rel="manifest" href="/misarifi/manifest.json" />
+
+  <!-- يسمح لـ Safari بتشغيل التطبيق بملء الشاشة -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50 min-h-screen flex flex-col">
@@ -53,15 +56,16 @@
     </section>
   </main>
 
-  <!-- تسجيل الـ Service Worker -->
+  <!-- تسجيل الـ Service Worker (مسار مطلق + نطاق) -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').catch(console.error);
+      navigator.serviceWorker.register('/misarifi/sw.js', { scope: '/misarifi/' })
+        .catch(console.error);
     }
   </script>
 
   <!-- منطق التطبيق -->
-  <script src="script.js"></script>
+  <script src="/misarifi/script.js"></script>
 
   <style>
     /* تنسيق موحَّد لحقول الإدخال */
