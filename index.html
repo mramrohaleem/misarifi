@@ -11,7 +11,7 @@
   <!-- Dexie (IndexedDB wrapper) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.2.5/dexie.min.js"></script>
 
-  <!-- Chart.js (للتقارير لاحقًا) -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- PWA Manifest -->
@@ -24,22 +24,19 @@
     <h1 class="text-center text-xl font-bold">حساب مصاريفي</h1>
   </header>
 
-  <!-- المحتوى الرئيسي -->
+  <!-- المحتوى -->
   <main id="app" class="flex-1 container mx-auto p-4 space-y-6">
-
     <!-- نموذج إضافة حركة -->
     <section class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow">
       <h2 class="font-semibold mb-3">أضف حركة جديدة</h2>
       <form id="txnForm" class="grid md:grid-cols-4 gap-3">
-        <input id="amount" type="number" step="0.01" placeholder="المبلغ (جنيه)" required
-               class="col-span-1 input-text" />
-        <input id="category" type="text" placeholder="الفئة (طعام، مواصلات…)" required
-               class="col-span-1 input-text" />
-        <input id="date" type="date" required
-               class="col-span-1 input-text" />
+        <input id="amount" type="number" step="0.01" placeholder="المبلغ (جنيه)" required class="col-span-1 input-text" />
+        <input id="category" type="text" placeholder="الفئة (طعام، مواصلات…)" required class="col-span-1 input-text" />
+        <input id="date" type="date" required class="col-span-1 input-text" />
         <input id="note" type="text" placeholder="ملاحظات (اختياري)" class="col-span-1 input-text" />
-        <button type="submit"
-                class="md:col-span-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg py-2">حفظ</button>
+        <button type="submit" class="md:col-span-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg py-2">
+          حفظ
+        </button>
       </form>
     </section>
 
@@ -49,27 +46,28 @@
       <ul id="txnList" class="space-y-2 text-sm"></ul>
     </section>
 
-    <!-- ملخص -->
+    <!-- ملخّص -->
     <section class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow">
       <h2 class="font-semibold mb-3">ملخّص الشهر</h2>
       <canvas id="summaryChart" height="160"></canvas>
     </section>
-
   </main>
 
-  <!-- التسجيل لـ Service Worker -->
+  <!-- تسجيل الـ Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .catch(console.error);
+      navigator.serviceWorker.register('sw.js').catch(console.error);
     }
   </script>
 
-  <!-- منطق التطبيق سيُضاف خطوة-ب-خطوة لاحقًا -->
-  <style>
-    /* تنسيق موحّد للحقل */
-    .input-text{ @apply border rounded-lg px-3 py-2 bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-600; }
-  </style>
+  <!-- منطق التطبيق -->
   <script src="script.js"></script>
+
+  <style>
+    /* تنسيق موحَّد لحقول الإدخال */
+    .input-text {
+      @apply border rounded-lg px-3 py-2 bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-600;
+    }
+  </style>
 </body>
 </html>
