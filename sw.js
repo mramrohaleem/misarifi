@@ -1,6 +1,5 @@
 const CACHE_NAME = 'misarifi-cache-v1';
 const ASSETS = [
-  '/',
   '/index.html',
   '/manifest.json',
   '/script.js',
